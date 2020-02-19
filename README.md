@@ -1,9 +1,11 @@
-# Linux Commands
+# List of frequently used commands. Linux, macOS, awscli ...
 
-Disk Free (df) Disk Use(du)
+Disk Free (df) 
 ```
 $ sudo df -h .; sudo du -sh /var/lib/docker 
-
+```
+Disk Use(du)
+```
 sudo du -a -h /var/lib/docker --max-depth=1 | sort -hr
 ```
 Free Memory
@@ -39,4 +41,15 @@ Display config file without comments and spaces.
 egrep -v '(^#|^\s*$)' 
 egrep -v "^[[:space:]]*#|^$" httpd.conf-orig
 egrep -v '(^#|^\s*$|^\s*\t*#)' httpd.conf-orig
+```
+
+# AWS s3
+Backup cloud9 environment to s3
+```
+$ aws s3 cp /home/ubuntu/environment/ s3://bucketname/ --recursive
+$ aws s3 sync /home/ubuntu/environment/ s3://bucketname/
+```
+Cronjob [min,hr,dayofmonth1-31,month,dayofweek sun0-6]
+```
+0 7 * * 1 aws s3 cp /home/ubuntu/environment/ s3://bucketname --recursive
 ```
