@@ -53,3 +53,22 @@ Cronjob [min,hr,dayofmonth1-31,month,dayofweek sun0-6]
 ```
 0 7 * * 1 aws s3 cp /home/ubuntu/environment/ s3://bucketname --recursive
 ```
+
+
+Protect your Cloud9 data. From Cloud9 terminal.
+
+Create s3 bucket
+----------------
+aws s3 mb s3://environment --region us-east-1
+
+Backup Cloud9 environment
+--------------------------
+aws s3 sync ~/environment s3://environment
+
+Restore Cloud9 environment
+--------------------------
+aws s3 sync s3://environment  ~/environment
+
+List s3
+--------
+aws s3 ls
